@@ -1,0 +1,148 @@
+.selectContainer {
+    width: 300px;
+}
+
+.label {
+    margin-bottom: 5px;
+}
+
+.select {
+    --anchor-name: unset;
+}
+
+.selectBox {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    anchor-name: var(--anchor-name);
+    padding: 8px 32px 8px 12px;
+    border: 2px solid hsl(240, 6%, 90%);
+    border-radius: 6px;
+    text-align: start;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.selectBox::before {
+    position: absolute;
+    content: '';
+    width: 10px;
+    height: 6px;
+    top: 15px;
+    right: 10px;
+    transition: transform 0.2s ease-in;
+    mask-image: url(./assets/arrow-down.svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 10px 6px;
+    background-color: hsl(0, 0%, 30%);
+}
+
+.select[aria-expanded='true'] .selectBox::before {
+    transform: rotate(180deg);
+}
+
+.selectBox:not(:disabled) {
+    cursor: pointer;
+}
+
+.selectBoxEmpty {
+    color: hsl(0, 0%, 40%);
+}
+
+.cleanValueButton {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    text-align: left;
+    padding: 5px 7px 5px 30px;
+    border-radius: 3px;
+    color: hsl(0, 0%, 40%);
+}
+
+.cleanValueButton::after {
+    position: absolute;
+    content: '';
+    width: 13px;
+    height: 11px;
+    top: 10px;
+    left: 8px;
+    mask-image: url(./assets/cross.svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 13px 11px;
+    background-color: hsl(0, 0%, 40%);
+}
+
+.option {
+    padding: 5px 7px 5px 30px;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+}
+
+.option[aria-selected='true']::after {
+    position: absolute;
+    content: '';
+    width: 13px;
+    height: 11px;
+    top: 11px;
+    left: 8px;
+    mask-image: url(./assets/check.svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 13px 11px;
+    background-color: hsl(0, 0%, 30%);
+}
+
+.cleanValueButton:hover,
+.option:hover {
+    background-color: hsl(217, 12%, 92%);
+}
+
+.cleanValueButton[data-highlighted='true'],
+.option[data-highlighted='true'] {
+    outline: 2px solid lightseagreen;
+}
+
+.dropdown {
+    position-anchor: var(--anchor-name);
+    box-sizing: border-box;
+    margin: 10px 0;
+    inset: auto;
+    inset-area: block-end;
+    position-try-options: --above;
+    width: anchor-size(width);
+    max-height: 200px;
+    padding: 10px;
+    border: 2px solid hsl(240, 6%, 90%);
+    border-radius: 6px;
+}
+
+.divider {
+    border: 0;
+    height: 0;
+    border-top: 2px solid hsl(240, 6%, 90%);
+}
+
+.optionsList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@position-try --above {
+    inset-area: block-start;
+}

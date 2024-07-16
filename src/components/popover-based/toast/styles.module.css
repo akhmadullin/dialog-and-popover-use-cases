@@ -1,0 +1,112 @@
+.toast {
+    --anchor-name: unset;
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 6px;
+    position: fixed;
+    inset: unset;
+    top: 20px;
+    right: 20px;
+
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(0, 0%, 0%);
+    box-shadow:
+        0px 10px 20px rgba(0, 0, 0, 0.07),
+        0px 10px 60px -5px rgba(1, 10, 48, 0.2);
+
+    anchor-name: var(--anchor-name);
+
+    transition:
+        opacity 0.3s ease-in,
+        scale 0.2s ease-in,
+        translate 0.2s ease-in,
+        display 0.2s ease-in;
+    transition-behavior: allow-discrete;
+
+    @starting-style {
+        opacity: 0;
+        translate: 0 -30px;
+    }
+
+    /* завязываемся на хидден, а не на поповер-опен чтобы по клику на крестик, анимация корректно срабатывала */
+    &[hidden] {
+        opacity: 0;
+        translate: -50px 0px;
+        display: none !important;
+
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in;
+    }
+}
+
+.toastUnderAnother {
+    --position-anchor: unset;
+    inset-block: calc(anchor(var(--position-anchor) end) + 10px);
+}
+
+.contentWrapper {
+    position: relative;
+    box-sizing: border-box;
+    padding: 15px;
+    min-height: 48px;
+}
+
+.toastWithCloseButton .contentWrapper {
+    padding-right: 40px;
+}
+
+.closeButton {
+    position: absolute;
+    top: 17px;
+    right: 15px;
+    mask-image: url(./assets/cross.svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 15px;
+    opacity: 0.4;
+    transition: opacity 0.15s ease-in;
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    outline-offset: 5px;
+}
+
+.closeButton:hover {
+    opacity: 1;
+}
+
+.toastInfo {
+    background-color: hsl(203, 100%, 97%);
+    box-shadow:
+        0px 10px 20px rgba(0, 0, 0, 0.07),
+        0px 10px 60px -5px rgba(0, 107, 204, 0.2);
+}
+
+.toastSuccess {
+    background-color: hsl(96, 89%, 93%);
+    box-shadow:
+        0px 10px 20px -5px rgba(0, 0, 0, 0.07),
+        0px 10px 50px -5px rgba(103, 204, 0, 0.4);
+}
+
+.toastWarning {
+    background-color: hsl(51, 100%, 92%);
+    box-shadow:
+        0px 10px 20px rgba(0, 0, 0, 0.07),
+        0px 10px 60px -5px rgba(229, 110, 0, 0.2);
+}
+
+.toastError {
+    background-color: hsl(353, 100%, 96%);
+    box-shadow:
+        0px 10px 20px rgba(0, 0, 0, 0.07),
+        0px 10px 60px -10px rgba(224, 0, 28, 0.2);
+}

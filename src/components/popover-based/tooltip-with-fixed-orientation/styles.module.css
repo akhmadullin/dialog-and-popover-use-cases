@@ -1,0 +1,84 @@
+.tooltip {
+    --width: auto;
+    --height: auto;
+    --maxWidth: auto;
+    --maxHeight: auto;
+
+    --anchor-el-name: unset;
+    --tooltip-el-name: unset;
+
+    position-anchor: var(--anchor-el-name);
+    anchor-name: var(--tooltip-el-name);
+
+    inset: auto;
+    box-sizing: border-box;
+    border: none;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    max-width: 500px;
+    background: hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+
+    width: var(--width);
+    height: var(--height);
+    max-width: var(--maxWidth);
+    max-height: var(--maxHeight);
+}
+
+.tooltipTopBottom {
+    inset-area: top;
+    position-try-options: flip-block;
+}
+
+.tooltipLeftRight {
+    inset-area: left;
+    position-try-options: flip-inline;
+}
+
+.tooltip::before,
+.tooltip::after {
+    content: '';
+    position: fixed;
+    background: inherit;
+    margin: auto;
+    position-anchor: var(--anchor-el-name);
+}
+
+.tooltipTopBottom::before,
+.tooltipTopBottom::after {
+    inset-inline: anchor(start) anchor(end);
+    width: 10px;
+    max-height: 10px;
+}
+
+.tooltipTopBottom::before {
+    inset-block-start: calc(anchor(end));
+    inset-block-end: calc(anchor(var(--tooltip-el-name) start));
+    transform: translateY(5px) rotate(45deg);
+}
+
+.tooltipTopBottom::after {
+    inset-block-start: calc(anchor(var(--tooltip-el-name) end));
+    inset-block-end: calc(anchor(start));
+    transform: translateY(-5px) rotate(45deg);
+}
+
+.tooltipLeftRight::before,
+.tooltipLeftRight::after {
+    inset-block: anchor(start) anchor(end);
+    height: 10px;
+    max-width: 10px;
+}
+
+.tooltipLeftRight::before {
+    inset-inline-start: calc(anchor(end));
+    inset-inline-end: calc(anchor(var(--tooltip-el-name) start));
+    transform: translateX(5px) rotate(45deg);
+}
+
+.tooltipLeftRight::after {
+    inset-inline-start: calc(anchor(var(--tooltip-el-name) end));
+    inset-inline-end: calc(anchor(start));
+    transform: translateX(-5px) rotate(45deg);
+}

@@ -1,0 +1,12 @@
+.question {
+    margin-bottom: 20px;
+}
+
+.answer {
+    margin-bottom: 20px;
+}
+
+.buttonsRow {
+    display: flex;
+    gap: 10px;
+}

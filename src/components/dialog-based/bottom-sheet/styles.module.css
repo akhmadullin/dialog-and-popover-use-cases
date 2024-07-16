@@ -1,0 +1,69 @@
+.bottomSheet {
+    box-sizing: border-box;
+    border: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 24px;
+    position: fixed;
+    inset: 0;
+    top: unset;
+    width: 100%;
+    max-width: 100%;
+}
+
+.bottomSheet::backdrop {
+    background-color: hsla(0, 0%, 0%, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+@keyframes show-backdrop {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes show-bottom-sheet {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes hide-bottom-sheet {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+        display: block;
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(100%);
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .bottomSheet:is(dialog)[open] {
+        animation: show-bottom-sheet 0.4s cubic-bezier(0.11, 0, 0.5, 0);
+    }
+
+    .bottomSheet:is(dialog) {
+        animation: hide-bottom-sheet 0.4s cubic-bezier(0.11, 0, 0.5, 0);
+    }
+
+    .bottomSheet:is(dialog)[open]::backdrop {
+        animation: show-backdrop 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+}

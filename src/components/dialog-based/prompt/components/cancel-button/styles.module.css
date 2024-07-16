@@ -1,0 +1,19 @@
+.button {
+    padding: 10px 16px;
+    border: 2px solid hsl(240, 6%, 90%);
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 0%);
+    font-size: inherit;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.button:hover {
+    background-color: hsl(240, 5%, 96%);
+}
+
+.button:disabled {
+    cursor: default;
+    background-color: hsl(240, 5%, 94%);
+}
