@@ -1,0 +1,8 @@
+.marginBottomMedium {
+    margin-bottom: 20px;
+}
+
+.buttonsRow {
+    display: flex;
+    gap: 10px;
+}

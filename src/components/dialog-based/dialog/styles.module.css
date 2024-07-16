@@ -1,0 +1,89 @@
+.modal {
+    --minWidth: 300px;
+    --maxWidth: 600px;
+    --minHeight: unset;
+    --maxHeight: unset;
+
+    box-sizing: border-box;
+    border: none;
+    border-radius: 8px;
+    padding: 24px;
+    position: fixed;
+    inset: 20px;
+    margin: auto;
+    min-width: var(--minWidth);
+    max-width: var(--maxWidth);
+    min-height: var(--minHeight);
+    max-height: var(--maxHeight);
+    /* width: calc(100% - 40px); */
+}
+
+.modal.nonmodal[open] {
+    /* position: fixed; */
+    box-shadow:
+        0px 10px 20px -15px rgba(81, 21, 21, 0.08),
+        0px 20px 60px -10px rgba(55, 84, 169, 0.2);
+}
+
+.modal::backdrop {
+    background-color: hsla(0, 0%, 0%, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.closeButton {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: transparent;
+    background-image: url(./cross.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    opacity: 0.3;
+    transition: opacity 0.15s ease-in;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    outline-offset: 5px;
+}
+
+.closeButton:hover {
+    opacity: 1;
+}
+
+.closeButton::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .modal[open] {
+        animation: show 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    .modal[open]::backdrop {
+        animation: show 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+}
+
+.modalWithScrollLock {
+}
+
+body:has(.modal[open].modalWithScrollLock) {
+    overflow: hidden;
+}

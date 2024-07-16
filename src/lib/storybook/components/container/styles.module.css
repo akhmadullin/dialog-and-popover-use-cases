@@ -1,0 +1,8 @@
+.container {
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container > * {
+    margin-bottom: 20px;
+}
