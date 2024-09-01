@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import type { StoryObj, Meta } from '@storybook/react';
-import Select, { OptionData } from '../select';
 import CenteredContentWithScroll from 'src/lib/storybook/components/centered-content-with-scroll';
+import withPopoverSupportsWarning from 'src/lib/storybook/decorators/with-popover-support-warning';
+import withCssAnchorPositioningSupportsWarning from 'src/lib/storybook/decorators/css-anchor-positioning-support-warning';
+import Select, { OptionData } from '../select';
 
 const meta: Meta<typeof Select> = {
     title: 'Popover Based/Select',
+    decorators: [withPopoverSupportsWarning, withCssAnchorPositioningSupportsWarning],
 };
 
 export default meta;

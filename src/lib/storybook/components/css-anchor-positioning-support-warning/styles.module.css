@@ -1,0 +1,12 @@
+.container { 
+    padding: 20px;
+    background-color: rgb(255, 249, 214);
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+@supports (anchor-name: --test) {
+    .container {
+        display: none;
+    }
+}
