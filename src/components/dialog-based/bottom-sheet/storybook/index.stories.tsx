@@ -1,60 +1,46 @@
 import React, { useState } from 'react';
 import type { StoryObj, Meta } from '@storybook/react';
-import { ViewportType } from 'storybook-config/viewports';
 import Container from 'src/lib/storybook/components/container';
+import Button from 'src/lib/storybook/components/button';
 import Heading from 'src/lib/storybook/components/heading';
 import Text from 'src/lib/storybook/components/text';
-import Button from 'src/lib/storybook/components/button';
 import BottomSheet from '../bottom-sheet';
+import { ViewportType } from 'storybook-config/viewports';
 
-const meta: Meta = {
-    title: 'Dialog Based/Bottom sheet',
+const meta: Meta<typeof BottomSheet> = {
+    title: 'Dialog Based/BottomSheet',
+    component: BottomSheet,
 };
 
 export default meta;
+type Story = StoryObj<typeof BottomSheet>;
 
-export const BottomSheetStory: StoryObj<typeof meta> = {
+export const BottomSheetStory: Story = {
+    args: {
+        isModal: true,
+        label: 'Пример BottomSheet',
+        withPageScrollLock: true,
+        withCloseOnOutsideClick: true,
+    },
     parameters: {
+        controls: {
+            include: ['label', 'withPageScrollLock', 'withCloseOnOutsideClick'],
+        },
         viewport: { defaultViewport: ViewportType.MobileMedium },
     },
-    render: () => {
+    render: (args) => {
         const [isOpen, setIsOpen] = useState(false);
-
         return (
-            <>
-                <Container style={{ padding: '0' }}>
-                    <Heading>Диалог в мобильном вебе или вебвью</Heading>
-                    <Text>В мобильном вебе интерфейс часто подражает мобильным приложениям</Text>
+            <Container>
+                <Button onClick={() => setIsOpen(true)}>Открыть Bottom Sheet</Button>
+                <BottomSheet {...args} isOpen={isOpen} close={() => setIsOpen(false)}>
+                    <Heading className="mb-20">Bottom Sheet</Heading>
                     <Text>
-                        И чтобы создать ощущение единной системы, диалог может эмитировать элемент из мобильных платформ
-                        - Bottom Sheet
+                        Диалог, который выглядит и анимируется, как элемент из мобильных платформ – Bottom Sheet.
                     </Text>
-                    <Button
-                        onClick={() => {
-                            setIsOpen(true);
-                        }}
-                    >
-                        Открыть Bottom Sheet
-                    </Button>
-                </Container>
-                <BottomSheet
-                    isModal
-                    isOpen={isOpen}
-                    close={() => {
-                        setIsOpen(false);
-                    }}
-                    withCloseOnOutsideClick
-                    label="Пример Bottom Sheet компонента"
-                >
-                    <Heading className="mb-20">Я - Bottom Sheet</Heading>
-                    <Text className="mb-10">На самом деле, я - обычный диалог.</Text>
-                    <Text className="mb-10">
-                        Но я могу выезжать снизу страницы, как Bottom Sheet в мобильных приложениях.
-                    </Text>
-                    <Text className="mb-10">И закрываться по клику на свободную область экрана.</Text>
-                    <Text>Так-то!</Text>
+                    <Text>Может быть полезным для создания похожего UI между вебом и мобилками.</Text>
                 </BottomSheet>
-            </>
+            </Container>
         );
     },
 };

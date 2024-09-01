@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import type { StoryObj, Meta } from '@storybook/react';
-import Container from 'src/lib/storybook/components/container';
+import HeightWrapper from 'src/lib/storybook/components/height-wrapper';
 import Heading from 'src/lib/storybook/components/heading';
 import Text from 'src/lib/storybook/components/text';
 import ButtonsRow from 'src/lib/storybook/components/buttons-row';
 import Button from 'src/lib/storybook/components/button';
-import Dialog from '../dialog';
+import Dialog from '../../dialog';
 
 const meta: Meta = {
     title: 'Dialog Based/Dialog',
+    tags: ['!dev'],
 };
 
 export default meta;
@@ -21,10 +22,7 @@ export const PageScrollLock: StoryObj<typeof meta> = {
 
         return (
             <>
-                <Container>
-                    <Heading>Блокировка скролла страницы</Heading>
-                    <Text>Иногда, бывает полезно блокировать скролл остальной страницы, пока открыт диалог.</Text>
-                    <Text>Элемент Dialog не делает этого по дефолту. Но это можно исправить.</Text>
+                <HeightWrapper>
                     <ButtonsRow>
                         <Button onClick={() => setIsOpenNonBlockingPageScroll(true)}>
                             Открыть диалог, неблокирующий скролл
@@ -33,7 +31,7 @@ export const PageScrollLock: StoryObj<typeof meta> = {
                             Открыть диалог с блокировкой скролла
                         </Button>
                     </ButtonsRow>
-                </Container>
+                </HeightWrapper>
 
                 <Dialog
                     isModal={false}

@@ -1,0 +1,77 @@
+import { Canvas, Meta } from '@storybook/blocks';
+ 
+import * as NonModalVsModal from './dialog/storybook/for-docs/non-modal-vs-modal.stories';
+import * as WhatWebPlatformProvides from './dialog/storybook/for-docs/what-web-platform-provides.stories';
+import * as CloseOnEscapeNonModalStories from './dialog/storybook/for-docs/close-on-escape-non-modal.stories';
+import * as CloseOnOutsideClickStories from './dialog/storybook/for-docs/close-on-outside-click.stories';
+import * as PageScrollLockStories from './dialog/storybook/for-docs/blocking-page-scroll.stories';
+
+import * as ConfirmStories from './confirm/storybook/for-docs/index.stories';
+
+import * as PromptStories from './prompt/storybook/for-docs/index.stories';
+
+import * as BottomSheetStories from './bottom-sheet/storybook/for-docs/index.stories';
+
+<Meta title="Dialog Based/Docs" />
+ 
+# Компоненты на основе элемента dialog
+
+## Dialog
+ 
+Как ни странно, на основе элемента `dialog` можно сделать компонент `Dialog`.
+
+Он может иметь как встроенные фичи веб платформы, так и накрученный сверху кастом.
+
+Но обо всем по порядку!
+
+### Чем отличается немодальный диалог от модального?
+
+<Canvas of={NonModalVsModal.NonModalVsModal} />
+
+### Что элемент dialog умеет делать в браузере по дефолту?
+
+<Canvas of={WhatWebPlatformProvides.WhatWebPlatformProvides} />
+
+### Закрытие диалога на Escape
+
+По дефолту браузеры дают возможность закрывать по нажатию на Escape только модальные диалоги.
+
+Если эта фича необходима и для немодальных диалогов, то ее можно реализовать самим.
+
+<Canvas of={CloseOnEscapeNonModalStories.CloseOnEscapeNonModal} />
+
+### Закрытие диалога по клику на область за его пределами
+
+По дефолту браузеры не дают такую возможность. Но такое поведение часто хотят видеть дизайнеры и бизнес. Его можно добавить самостоятельно.
+
+<Canvas of={CloseOnOutsideClickStories.CloseOnOutsideClick} />
+
+### Блокировка скролла страницы
+
+Иногда, бывает полезно блокировать скролл остальной страницы, пока открыт диалог.
+
+Элемент `dialog` не делает этого по дефолту. Но это можно исправить.
+
+<Canvas of={PageScrollLockStories.PageScrollLock} />
+
+## Confirm
+
+На основе диалога можно делать вспомогательные компоненты - например, кастомизированный аналог метода `confirm()`.
+
+Подобный компонент можно использовать там, где нужен свой кастомный дизайн и нет нужды блокировать исполнение основного потока во время показа `confirm`.
+
+<Canvas of={ConfirmStories.ConfirmStoryForDocs} />
+
+## Prompt
+
+Аналогично `confirm`, можно сделать аналог нативного `prompt`.
+
+<Canvas of={PromptStories.PromptStoryForDocs} />
+
+## Bottom sheet (aka шторка)
+
+В мобильном вебе интерфейс часто подражает мобильным приложениям.
+
+И чтобы создать ощущение единной системы, `dialog` может эмитировать элемент из мобильных платформ – `Bottom Sheet`.
+
+<Canvas of={BottomSheetStories.BottomSheetStoryInIfame} />

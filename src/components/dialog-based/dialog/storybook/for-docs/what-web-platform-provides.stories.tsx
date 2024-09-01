@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import type { StoryObj, Meta } from '@storybook/react';
-import Container from 'src/lib/storybook/components/container';
+import HeightWrapper from 'src/lib/storybook/components/height-wrapper';
 import Heading from 'src/lib/storybook/components/heading';
 import Text from 'src/lib/storybook/components/text';
 import ButtonsRow from 'src/lib/storybook/components/buttons-row';
 import Button from 'src/lib/storybook/components/button';
 import UnsortedList from 'src/lib/storybook/components/unsorted-list';
-import Dialog from '../dialog';
+import Dialog from '../../dialog';
 
 const meta: Meta = {
     title: 'Dialog Based/Dialog',
+    tags: ['!dev'],
 };
 
 export default meta;
@@ -22,14 +23,12 @@ export const WhatWebPlatformProvides: StoryObj<typeof meta> = {
 
         return (
             <>
-                <Container>
-                    <Heading>Чем веб плафторма одарила диалог?</Heading>
-                    <Text>Что по дефолту умеет делать dialog в браузере?</Text>
+                <HeightWrapper>
                     <ButtonsRow>
                         <Button onClick={() => setIsOpenNonModal(true)}>Открыть немодальный диалог</Button>
                         <Button onClick={() => setIsOpenModal(true)}>Открыть модальный диалог</Button>
                     </ButtonsRow>
-                </Container>
+                </HeightWrapper>
                 <Dialog
                     isModal={false}
                     isOpen={isOpenNonModal}
@@ -37,7 +36,7 @@ export const WhatWebPlatformProvides: StoryObj<typeof meta> = {
                     label="Пример немодального диалога"
                     withPageScrollLock
                 >
-                    <Heading className="mb-20">Я - немодальный диалог</Heading>
+                    <Heading className="mb-20">Немодальный диалог</Heading>
                     <UnsortedList
                         options={[
                             `Меня можно открыть из JavaScript'а с помощью метода show()`,
@@ -51,7 +50,7 @@ export const WhatWebPlatformProvides: StoryObj<typeof meta> = {
                     close={() => setIsOpenModal(false)}
                     label="Пример модального диалога"
                 >
-                    <Heading className="mb-20">Я - модальный диалог</Heading>
+                    <Heading className="mb-20">Модальный диалог</Heading>
                     <UnsortedList
                         options={[
                             `Меня можно открыть из JavaScript'а с помощью метода showModal()`,

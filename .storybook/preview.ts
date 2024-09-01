@@ -22,6 +22,7 @@ const preview: Preview = {
           'Intro',
           'Dialog Based',
           [
+            'Docs',
             'Dialog',
             'Confirm',
             'Prompt',

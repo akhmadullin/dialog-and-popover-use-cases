@@ -1,65 +1,75 @@
 import React, { useState } from 'react';
 import type { StoryObj, Meta } from '@storybook/react';
+import Container from 'src/lib/storybook/components/container';
 import Button from 'src/lib/storybook/components/button';
 import Prompt from '../prompt';
-import Container from 'src/lib/storybook/components/container';
-import Heading from 'src/lib/storybook/components/heading';
-import Text from 'src/lib/storybook/components/text';
 
-const meta: Meta = {
+const meta: Meta<typeof Prompt> = {
     title: 'Dialog Based/Prompt',
+    component: Prompt,
 };
 
 export default meta;
+type Story = StoryObj<typeof Prompt>;
 
-export const PromptStory: StoryObj<typeof meta> = {
-    render: () => {
-        const [favoriteFeature, setFavoriteFeature] = useState('');
+export const PromptStory: Story = {
+    args: {
+        isModal: true,
+        label: 'Пример Prompt',
+        question: 'Очень важный вопрос?',
+        placeholder: 'Введите ответ',
+        okText: 'Сохранить',
+        cancelText: 'Отмена',
+        withPageScrollLock: false,
+        withCloseOnOutsideClick: false,
+        minWidth: '350px',
+        minHeight: '',
+        maxWidth: '',
+        maxHeight: '',
+    },
+    parameters: {
+        controls: {
+            include: [
+                'label',
+                'question',
+                'placeholder',
+                'okText',
+                'cancelText',
+                'withPageScrollLock',
+                'withCloseOnOutsideClick',
+                'minWidth',
+                'minHeight',
+                'maxWidth',
+                'maxHeight',
+            ],
+        },
+    },
+    render: (args) => {
         const [isOpen, setIsOpen] = useState(false);
-
+        const [answer, setAnswer] = useState('');
         return (
-            <>
-                <Container>
-                    <Heading>Промпт</Heading>
-                    <Text>Аналогично конфёрму, можно сделать аналог нативного промпта</Text>
-                    <h3 style={{ marginTop: '40px' }}>Анкета</h3>
-                    <Text>
-                        Мой любимый WEB API:{' '}
-                        {favoriteFeature ? (
-                            <span style={{ textDecoration: 'underline' }}>{favoriteFeature}</span>
+            <Container>
+                <div className="mb-20">
+                    <span>Ответ на вопрос: </span>
+                    <span>
+                        {' '}
+                        {answer ? (
+                            <span style={{ textDecoration: 'underline' }}>{answer}</span>
                         ) : (
                             <span style={{ fontStyle: 'italic', opacity: '0.6', textDecoration: 'underline' }}>
                                 не заполнено
                             </span>
                         )}
-                    </Text>
-                    <Button
-                        onClick={() => {
-                            setIsOpen(true);
-                        }}
-                    >
-                        Заполнить
-                    </Button>
-                </Container>
+                    </span>
+                </div>
+                <Button onClick={() => setIsOpen(true)}>Открыть Prompt</Button>
                 <Prompt
-                    isModal
+                    {...args}
                     isOpen={isOpen}
-                    close={() => {
-                        setIsOpen(false);
-                    }}
-                    question="Какой твой любимый WEB API?"
-                    placeholder="Popover API, например"
-                    okText="Сохранить"
-                    cancelText="Отменить"
-                    okCallback={(answer) => {
-                        console.log('Ответ сохранен');
-                        setFavoriteFeature(answer);
-                    }}
-                    cancelCallback={() => console.log('Отмена сохранения')}
-                    label="Пример promt компонента"
-                    minWidth="440px"
+                    close={() => setIsOpen(false)}
+                    okCallback={(value) => setAnswer(value)}
                 />
-            </>
+            </Container>
         );
     },
 };

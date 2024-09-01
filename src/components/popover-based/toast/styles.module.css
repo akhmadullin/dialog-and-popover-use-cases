@@ -83,7 +83,7 @@
     opacity: 1;
 }
 
-.toastInfo {
+/* .toastInfo {
     background-color: hsl(203, 100%, 97%);
     box-shadow:
         0px 10px 20px rgba(0, 0, 0, 0.07),
@@ -109,4 +109,4 @@
     box-shadow:
         0px 10px 20px rgba(0, 0, 0, 0.07),
         0px 10px 60px -10px rgba(224, 0, 28, 0.2);
-}
+} */

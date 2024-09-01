@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import type { StoryObj, Meta } from '@storybook/react';
-import Container from 'src/lib/storybook/components/container';
+import HeightWrapper from 'src/lib/storybook/components/height-wrapper';
 import Heading from 'src/lib/storybook/components/heading';
 import Text from 'src/lib/storybook/components/text';
 import ButtonsRow from 'src/lib/storybook/components/buttons-row';
 import Button from 'src/lib/storybook/components/button';
-import Dialog from '../dialog';
+import Dialog from '../../dialog';
 
 const meta: Meta = {
     title: 'Dialog Based/Dialog',
+    tags: ['!dev'],
 };
 
 export default meta;
@@ -21,17 +22,12 @@ export const CloseOnOutsideClick: StoryObj<typeof meta> = {
 
         return (
             <>
-                <Container>
-                    <Heading>Закрытие диалога по клику на область за его пределами</Heading>
-                    <Text>
-                        По дефолту браузеры не дают такую возможность. Но такое поведение часто хотят видеть дизайнеры и
-                        бизнес. Его можно добавить самостоятельно.
-                    </Text>
+                <HeightWrapper>
                     <ButtonsRow>
                         <Button onClick={() => setIsOpenNonModal(true)}>Открыть немодальный диалог</Button>
                         <Button onClick={() => setIsOpenModal(true)}>Открыть модальный диалог</Button>
                     </ButtonsRow>
-                </Container>
+                </HeightWrapper>
                 <Dialog
                     isModal={false}
                     isOpen={isOpenNonModal}
@@ -39,7 +35,7 @@ export const CloseOnOutsideClick: StoryObj<typeof meta> = {
                     label="Пример немодального диалога"
                     withCloseOnOutsideClick
                 >
-                    <Heading className="mb-20">Я - немодальный диалог</Heading>
+                    <Heading className="mb-20">Немодальный диалог</Heading>
                     <Text className="mb-10">Меня можно закрыть с помощью клика на свободную область страницы.</Text>
                     <Text>Это все благодаря пропу withCloseOnOutsideClick.</Text>
                 </Dialog>
@@ -50,7 +46,7 @@ export const CloseOnOutsideClick: StoryObj<typeof meta> = {
                     label="Пример модального диалога"
                     withCloseOnOutsideClick
                 >
-                    <Heading className="mb-20">Я - модальный диалог</Heading>
+                    <Heading className="mb-20">Модальный диалог</Heading>
                     <Text className="mb-10">
                         Меня тоже можно закрыть с помощью клика на свободную область страницы.
                     </Text>
