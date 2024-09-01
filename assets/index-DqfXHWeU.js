@@ -1,0 +1,1 @@
+import{j as a,c as o}from"./index-CMu3Kjdk.js";const i="_heading_norbb_1",d={heading:i},t=({children:s,className:e,...n})=>a.jsx("h2",{className:o(d.heading,e),...n,children:s});t.__docgenInfo={description:"",methods:[],displayName:"Heading"};export{t as H};

@@ -1,0 +1,1 @@
+import{j as t,c as e}from"./index-CMu3Kjdk.js";const a="_container_y2wbt_1",c={container:a},r=({className:n,children:o,...s})=>t.jsx("div",{className:e(c.container,n),...s,children:o});r.__docgenInfo={description:"",methods:[],displayName:"Container"};export{r as C};

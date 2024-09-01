@@ -1,1 +1,0 @@
-import{j as n,c}from"./index-Cc0r8_xM.js";const e="_buttonsRow_7ujcn_1",u={buttonsRow:e},a=({className:o,children:s,...t})=>n.jsx("div",{className:c(u.buttonsRow,o),...t,children:s});a.__docgenInfo={description:"",methods:[],displayName:"ButtonsRow"};export{a as B};
