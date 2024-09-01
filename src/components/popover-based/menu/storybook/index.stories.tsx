@@ -1,11 +1,9 @@
 import type { StoryObj, Meta } from '@storybook/react';
+import CenteredContentWithScroll from 'src/lib/storybook/components/centered-content-with-scroll';
 import Button from 'src/lib/storybook/components/button';
 import { Menu, ItemData } from '..';
-import Container from 'src/lib/storybook/components/container';
-import Heading from 'src/lib/storybook/components/heading';
-import Text from 'src/lib/storybook/components/text';
 
-const meta: Meta = {
+const meta: Meta<typeof Menu> = {
     title: 'Popover Based/Menu',
 };
 
@@ -65,23 +63,29 @@ const itemsSample: ItemData[] = [
 ];
 
 export const MenuStory: StoryObj<typeof meta> = {
+    args: {
+        items: itemsSample,
+        ariaLabel: 'Действия',
+    },
+    argTypes: {
+        items: {
+            control: 'object',
+        },
+        ariaLabel: {
+            control: 'text',
+        },
+    },
     render: () => {
         const menuId = 'menuId';
         const anchorName = '--menu-button-anchor';
 
         return (
-            <Container>
-                <Heading>Меню</Heading>
-                <Text>Поповер также отлично ложится в UI-паттерн "меню".</Text>
-                <Text>
-                    Элементы меню в примере ниже не имеют под собой никакого функционала, приведены просто для
-                    наглядности.
-                </Text>
-                <Button popovertarget={menuId} style={{ anchorName, marginLeft: '300px' }}>
+            <CenteredContentWithScroll>
+                <Button popovertarget={menuId} style={{ anchorName }}>
                     Открыть меню
                 </Button>
-                <Menu id={menuId} anchorName={anchorName} items={itemsSample} ariaLabel="Actions" />
-            </Container>
+                <Menu id={menuId} anchorName={anchorName} items={itemsSample} ariaLabel="Действия" />
+            </CenteredContentWithScroll>
         );
     },
 };

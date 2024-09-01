@@ -28,12 +28,12 @@
 
 .tooltipTopBottom {
     inset-area: top;
-    position-try-options: flip-block;
+    position-try-fallbacks: flip-block;
 }
 
 .tooltipLeftRight {
     inset-area: left;
-    position-try-options: flip-inline;
+    position-try-fallbacks: flip-inline;
 }
 
 .tooltip::before,

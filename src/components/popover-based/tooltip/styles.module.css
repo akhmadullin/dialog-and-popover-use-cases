@@ -10,7 +10,7 @@
     position-anchor: var(--anchor-el-name);
     anchor-name: var(--tooltip-el-name);
     inset-area: block-start;
-    position-try-options: --under, --on-left, --on-right;
+    position-try-fallbacks: --under, --on-left, --on-right;
 
     inset: auto;
     box-sizing: border-box;
