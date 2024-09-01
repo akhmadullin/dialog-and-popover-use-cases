@@ -1,10 +1,13 @@
 import type { StoryObj, Meta } from '@storybook/react';
+import withPopoverSupportsWarning from 'src/lib/storybook/decorators/with-popover-support-warning';
+import withCssAnchorPositioningSupportsWarning from 'src/lib/storybook/decorators/css-anchor-positioning-support-warning';
 import CenteredContentWithScroll from 'src/lib/storybook/components/centered-content-with-scroll';
 import Button from 'src/lib/storybook/components/button';
 import { Menu, ItemData } from '..';
 
 const meta: Meta<typeof Menu> = {
     title: 'Popover Based/Menu',
+    decorators: [withPopoverSupportsWarning, withCssAnchorPositioningSupportsWarning],
 };
 
 export default meta;
