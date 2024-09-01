@@ -1,30 +1,25 @@
 import React from 'react';
 import type { StoryObj, Meta } from '@storybook/react';
 import Button from 'src/lib/storybook/components/button';
-import Container from 'src/lib/storybook/components/container';
-import Heading from 'src/lib/storybook/components/heading';
-import Text from 'src/lib/storybook/components/text';
 import ToastGroup, { toastify } from '../components/toast-group';
 
 const meta: Meta = {
     title: 'Popover Based/Toast',
-    args: {
-        timeout: 5000,
-        content: `Привет! Я тост "испеченный" через Popover и CSS Anchor Position 🤩`,
-        withCloseButton: false,
-    },
 };
 
 export default meta;
 
 export const NotChangingEachOther: StoryObj<typeof meta> = {
     name: '1) Not Changing Each Other',
+    args: {
+        timeout: 5000,
+        content: 'Пример тоста, работающего на Popover и CSS Anchor Position 🤩',
+        withCloseButton: false,
+    },
     render: ({ content, withCloseButton, timeout }) => {
         return (
             <ToastGroup>
-                <Container>
-                    <Heading>Тост</Heading>
-                    <Text>Тосты, нотификации - куда же без них.</Text>
+                <div style={{ width: '100%', height: '75px' }}>
                     <Button
                         onClick={() => {
                             toastify(content, { withCloseButton, timeout });
@@ -32,7 +27,7 @@ export const NotChangingEachOther: StoryObj<typeof meta> = {
                     >
                         Показать тост
                     </Button>
-                </Container>
+                </div>
             </ToastGroup>
         );
     },
@@ -40,15 +35,15 @@ export const NotChangingEachOther: StoryObj<typeof meta> = {
 
 export const ChangingEachOther: StoryObj<typeof meta> = {
     name: '2) Changing Each Other',
+    args: {
+        timeout: 5000,
+        content: 'Пример сообщения об ошибке',
+        withCloseButton: false,
+    },
     render: ({ content, withCloseButton, timeout }) => {
         return (
             <ToastGroup>
-                <Container>
-                    <Heading>Тост</Heading>
-                    <Text>
-                        Порой необходимо, чтобы нотификация об одной и том же событии, сменяла своего предшественника.
-                        Например, если это нотификации об одной и той же ошибке.
-                    </Text>
+                <div style={{ width: '100%', height: '75px' }}>
                     <Button
                         onClick={() => {
                             toastify(content, { withCloseButton, timeout, id: 'the-same-id' });
@@ -56,7 +51,7 @@ export const ChangingEachOther: StoryObj<typeof meta> = {
                     >
                         Нажми на меня несколько раз подряд
                     </Button>
-                </Container>
+                </div>
             </ToastGroup>
         );
     },

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import type { StoryObj, Meta } from '@storybook/react';
 import Select, { OptionData } from '../select';
-import Container from 'src/lib/storybook/components/container';
-import Heading from 'src/lib/storybook/components/heading';
-import Text from 'src/lib/storybook/components/text';
+import CenteredContentWithScroll from 'src/lib/storybook/components/centered-content-with-scroll';
 
-const meta: Meta = {
+const meta: Meta<typeof Select> = {
     title: 'Popover Based/Select',
 };
 
@@ -23,36 +21,36 @@ const options: OptionData[] = [
 ];
 
 export const SelectStory: StoryObj<typeof meta> = {
-    render: () => {
+    args: {
+        options,
+        disabled: false,
+        emptyOptionContent: 'Любой фрукт',
+    },
+    argTypes: {
+        options: {
+            control: 'object',
+        },
+        disabled: {
+            control: 'boolean',
+        },
+        emptyOptionContent: {
+            control: 'text',
+        },
+    },
+    render: (args) => {
         const [singleValue, setSingleValue] = useState<string[]>([]);
         const [multipleValue, setMultipleValue] = useState<string[]>([]);
         return (
-            <Container style={{ minHeight: '200vh' }}>
-                <Heading>Селект</Heading>
-                <Text>Поповер может пригодиться в качестве дропдауна для селектообразных компонентов.</Text>
-                <div style={{ display: 'flex', gap: '20px', margin: '100px auto' }}>
-                    <Select
-                        value={singleValue}
-                        onChange={setSingleValue}
-                        options={options}
-                        label="Любимый фрукт"
-                        placeholder="Только один"
-                        emptyOptionContent="Любой фрукт"
-                    />
-                    <Select
-                        value={multipleValue}
-                        onChange={setMultipleValue}
-                        options={options}
-                        label="Любимые фрукты"
-                        placeholder="Можно несколько"
-                        emptyOptionContent="Любой фрукт"
-                        multiple
-                    />
-                </div>
-
-                <Text>А если добавить CSS Anchor Positioning, то вообще будет песня!</Text>
-                <Text>Попробуй поскролить или изменить высоту вьюпорта.</Text>
-            </Container>
+            <CenteredContentWithScroll>
+                <Select {...args} value={singleValue} onChange={setSingleValue} placeholder="Только один" />
+                <Select
+                    {...args}
+                    value={multipleValue}
+                    onChange={setMultipleValue}
+                    placeholder="Можно несколько"
+                    multiple
+                />
+            </CenteredContentWithScroll>
         );
     },
 };

@@ -1,0 +1,87 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as ToastStories from './toast/storybook/index.stories';
+
+<Meta title="Popover Based/Docs" />
+ 
+# Компоненты на основе атрибута popover
+
+На основе атрибута popover можно делать всплывающие элементы, которым не нужна модальность.
+
+Если добавить к popover CSS anchor positioning, то получаются по-настоющему гибкие и адаптивные компоненты, которые могут подстраиваться под различные положения элемента относительно вьюпорта.
+
+## Tooltip
+
+Очень часто в интерфейсах нужно показать тултип - подсказку, которая дает пользователю больше информации о том, что происходит на странице.
+
+### Tooltip, адаптирующийся в рамках одной оси
+
+Иногда нужно, чтобы тултип показывался либо сверху/снизу, либо справа/слева.
+
+<iframe
+    src="?path=/story/popover-based-tooltip-with-fixed-orientation--tooltip-story-for-docs&full=1&shortcuts=false&singleStory=true"
+    width="100%"
+    height="300px"
+    style={{ 
+        boxShadow: 'rgba(0, 0, 0, 0.10) 0 1px 3px 0',
+        border: '1px solid hsla(203, 50%, 30%, 0.15)',
+        borderRadius: '4px',
+     }}
+></iframe>
+
+### Tooltip, адаптирующийся под все 4 стороны
+
+Иногда нужно, что тултип мог адаптироваться под все любое положение на экране.
+
+<iframe
+    src="?path=/story/popover-based-tooltip--tooltip-story-for-docs&full=1&shortcuts=false&singleStory=true"
+    width="100%"
+    height="300px"
+    style={{ 
+        boxShadow: 'rgba(0, 0, 0, 0.10) 0 1px 3px 0',
+        border: '1px solid hsla(203, 50%, 30%, 0.15)',
+        borderRadius: '4px',
+     }}
+></iframe>
+
+## Toast
+
+Тосты – всплывающие нотификации.
+
+Бывают полезны, когда есть необходимость уведомить пользователя о произошедшем событии. 
+
+<Canvas of={ToastStories.NotChangingEachOther}  />
+
+Порой необходимо, чтобы нотификация об одной и том же событии, сменяла своего предшественника. Например, если это нотификации об одной и той же ошибке.
+
+<Canvas of={ToastStories.ChangingEachOther}  />
+
+## Select
+
+Поповер может пригодиться в качестве дропдауна для селектообразных компонентов.
+
+<iframe
+    src="?path=/story/popover-based-select--select-story&full=1&shortcuts=false&singleStory=true"
+    width="100%"
+    height="400px"
+    style={{ 
+        boxShadow: 'rgba(0, 0, 0, 0.10) 0 1px 3px 0',
+        border: '1px solid hsla(203, 50%, 30%, 0.15)',
+        borderRadius: '4px',
+     }}
+></iframe>
+
+## Menu
+
+Поповер также отлично ложится в UI-паттерн «Меню».
+
+<iframe
+    src="?path=/story/popover-based-menu--menu-story&full=1&shortcuts=false&singleStory=true"
+    width="100%"
+    height="400px"
+    style={{ 
+        boxShadow: 'rgba(0, 0, 0, 0.10) 0 1px 3px 0',
+        border: '1px solid hsla(203, 50%, 30%, 0.15)',
+        borderRadius: '4px',
+     }}
+></iframe>

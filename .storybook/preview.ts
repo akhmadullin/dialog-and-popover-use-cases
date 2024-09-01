@@ -29,9 +29,10 @@ const preview: Preview = {
             'Bottom sheet',
           ],
           'Popover Based',
-          [
-            'Tooltip',
+          [ 
+            'Docs',
             'Tooltip with fixed orientation',
+            'Tooltip',
             'Toast',
             'Select',
             'Menu',

@@ -6,7 +6,7 @@ const prepareCssProps = (cssProps: CssPropsForTooltip) => {
             return acc;
         }
 
-        acc[key as keyof CssPropsForTooltipDict] = value;
+        acc[`--${key}` as keyof CssPropsForTooltipDict] = value;
 
         return acc;
     }, {} as CssPropsForTooltipDict);
