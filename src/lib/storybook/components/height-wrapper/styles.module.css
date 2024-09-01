@@ -1,0 +1,7 @@
+.heightWrapper {
+    width: 100%;
+}
+
+.heightWrapper > * {
+    margin-bottom: 20px;
+}
