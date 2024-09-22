@@ -2,7 +2,7 @@
     --menu-button-anchor-name: unset;
     position-anchor: var(--menu-button-anchor-name);
     inset: auto;
-    inset-area: block-end span-inline-end;
+    position-area: block-end span-inline-end;
     position-try-fallbacks: --menu-left;
     margin: 0;
     padding: 5px;
@@ -15,7 +15,7 @@
 }
 
 @position-try --menu-left {
-    inset-area: block-start span-inline-end;
+    position-area: block-start span-inline-end;
 }
 
 .menuOption {
@@ -70,7 +70,7 @@
 }
 
 .menuSubMenu {
-    inset-area: inline-end span-block-end;
+    position-area: inline-end span-block-end;
     position-try-fallbacks: --submenu-left, --submenu-left2, --submenu-right2;
     margin: 0 10px;
 }
@@ -80,13 +80,13 @@
 }
 
 @position-try --submenu-left {
-    inset-area: inline-start span-block-end;
+    position-area: inline-start span-block-end;
 }
 
 @position-try --submenu-left2 {
-    inset-area: inline-start span-block-start;
+    position-area: inline-start span-block-start;
 }
 
 @position-try --submenu-right2 {
-    inset-area: inline-end span-block-start;
+    position-area: inline-end span-block-start;
 }

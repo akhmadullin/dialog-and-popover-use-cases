@@ -9,7 +9,7 @@
 
     position-anchor: var(--anchor-el-name);
     anchor-name: var(--tooltip-el-name);
-    inset-area: block-start;
+    position-area: block-start;
     position-try-fallbacks: --under, --on-left, --on-right;
 
     inset: auto;
@@ -88,13 +88,13 @@
 }
 
 @position-try --under {
-    inset-area: block-end;
+    position-area: block-end;
 }
 
 @position-try --on-left {
-    inset-area: inline-start;
+    position-area: inline-start;
 }
 
 @position-try --on-right {
-    inset-area: inline-end;
+    position-area: inline-end;
 }
